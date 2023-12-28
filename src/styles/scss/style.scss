@@ -1,8 +1,18 @@
 @import 'libs/normalize';
 @import 'libs/fonts';
+
 @import 'variables/variables';
 @import 'mixins/mixins';
+@import 'libs/animate';
 
 @import 'base';
 
+@import 'blocks/title';
+@import 'blocks/buttons';
+@import 'blocks/header';
+@import 'blocks/icons/promo-icon';
+@import 'blocks/icons/advantages-icon';
+
+@import 'blocks/promo';
+@import 'blocks/advantages';
 @import 'media/media';

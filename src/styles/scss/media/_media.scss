@@ -1,17 +1,44 @@
-@media (max-width: 1199.98px) {
-	.container {
-		max-width: 960px;
-	}
-}
-
 @media (max-width: 991.98px) {
 	.container {
 		max-width: 720px;
 	}
+	.advantages {
+		&__wrapper {
+			gap: 35px 10px;
+			justify-content: space-around;
+		}
 	}
+}
 @media (max-width: 767.98px) {
 	.container {
 		max-width: 540px;
+	}
+	.header {
+		gap: 50px 15px;
+		justify-content: space-around;
+	}
+	.promo {
+		min-height: 650px;
+		min-height: 650px;
+		background-position: 45% 50%;
+		&__wrapper {
+			align-items: center;
+		}
+		&__title {
+			margin-top: 60px;
+			font-size: 38px;
+		}
+		&__subtitle {
+			font-size: 20px;
+		}
+		&__link {
+			margin-top: 10px;
+		}
+		.button_w300 {
+			width: 240px;
+			height: 44px;
+			font-size: 15px;
+		}
 	}
 }
 
@@ -20,5 +47,32 @@
 		max-width: auto;
 		width: 100%;
 		padding: 0 10px;
+	}
+	.header {
+		gap: 20px 15px;
+	}
+	.promo {
+		background-position: 35% 50%;
+		&__title {
+			margin-top: 50px;
+			font-size: 34px;
+		}
+		&__subtitle {
+			font-size: 16px;
+		}
+		&__link {
+			margin-top: 10px;
+		}
+		.button_w300 {
+			margin-top: 50px;
+			width: 240px;
+			height: 44px;
+			font-size: 15px;
+		}
+		.promo-icons {
+			margin-top: 50px;
+			gap: 20px 5px;
+			justify-content: space-evenly;
+		}
 	}
 }

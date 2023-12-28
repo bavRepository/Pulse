@@ -1,9 +1,23 @@
-@mixin animate($animation, $duration, $method, $times) {
-	animation: $animation $duration $method $times;
+@mixin link-fade-in-out-timing() {
+	transition-timing-function: ease-in-out;
+	transition-duration: 0.05s;
+	transition-property: font-size, transform;
 }
 
-@mixin keyframes($name) {
-	@keyframes #{$name} {
-		@content;
-	}
+@mixin btn-fade-in-out-timing() {
+	transition-timing-function: ease-in-out;
+	transition:
+		box-shadow 0.6s,
+		text-shadow 0.3s,
+		transform 0.2s;
+}
+
+@mixin btn-hover-effects() {
+	box-shadow:
+		3px 3px 8px #6c0509,
+		-3px -3px 8px #a5080e;
+	text-shadow:
+		20px 20px 20px #f0e68c,
+		-20px -20px 20px #f0e68c;
+	transform: scale(1.04);
 }
