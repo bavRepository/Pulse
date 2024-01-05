@@ -22,8 +22,10 @@
 		font-weight: 300;
 		line-height: 18px;
 		margin-top: 20px;
-		span {
+		a {
+			display: inline-block;
 			color: #f00;
+			@include link-with-hover-and-timing;
 		}
 	}
 }

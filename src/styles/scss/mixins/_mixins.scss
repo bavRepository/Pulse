@@ -1,23 +1,29 @@
-@mixin link-fade-in-out-timing() {
-	transition-timing-function: ease-in-out;
-	transition-duration: 0.05s;
-	transition-property: font-size, transform;
-}
-
 @mixin btn-fade-in-out-timing() {
-	transition-timing-function: ease-in-out;
 	transition:
-		box-shadow 0.6s,
-		text-shadow 0.3s,
-		transform 0.2s;
+		box-shadow 0.4s ease-in-out,
+		text-shadow 0.2s ease-in-out,
+		transform 0.1s ease-in-out;
 }
 
 @mixin btn-hover-effects() {
 	box-shadow:
-		3px 3px 8px #6c0509,
-		-3px -3px 8px #a5080e;
+		2px 2px 7px #6c0509,
+		-2px -2px 7px #a5080e;
 	text-shadow:
 		20px 20px 20px #f0e68c,
 		-20px -20px 20px #f0e68c;
 	transform: scale(1.04);
+}
+
+@mixin link-with-hover-and-timing() {
+	transition: $link-fz-fade-in-out-timing01;
+	&:hover {
+		transform: scale(1.05);
+	}
+}
+
+@mixin dot-active() {
+	@include btn-hover-effects();
+	opacity: 1;
+	background: linear-gradient(to top, #deb887 10%, #a80404 70%);
 }

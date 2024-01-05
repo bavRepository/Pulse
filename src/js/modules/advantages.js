@@ -1,8 +1,10 @@
 function advantages() {
-	const nameClassArray = ['swing', 'jump', 'heart']
+	const nameClassArray = ['swing', 'jump', 'heart'],
+		objElemPos = {},
+		windowPos = {}
 	let animateElemRect
 
-	const icons = document.querySelectorAll('.advantages-icon img'),
+	const advantagesIcons = document.querySelectorAll('.advantages-icon img'),
 		promoIcons = document.querySelectorAll('.promo-icon img')
 
 	function getRandomName(num) {
@@ -12,19 +14,21 @@ function advantages() {
 	window.addEventListener('scroll', showAnimation)
 
 	function showAnimation() {
-		if (icons.length === 0) {
+		if (advantagesIcons.length === 0) {
 			return
 		}
 
-		;[...icons, ...promoIcons].forEach(item => {
+		;[...advantagesIcons, ...promoIcons].forEach(item => {
 			setRandomClass(item)
 		})
 		function setRandomClass(elem) {
+			objElemPos.top = window.scrollY + elem.getBoundingClientRect().top
+			objElemPos.bot = window.scrollY + elem.getBoundingClientRect().bottom
+			windowPos.top = window.scrollY
+			windowPos.bot = window.scrollY + document.documentElement.clientHeight
+
 			animateElemRect = elem.getBoundingClientRect()
-			if (
-				(animateElemRect.top >= 0 && animateElemRect.top <= 550) ||
-				(animateElemRect.top < 0 && animateElemRect.bottom >= -50)
-			) {
+			if (objElemPos.bot > windowPos.top && objElemPos.top < windowPos.bot) {
 				if (elem.classList.length < 1) {
 					elem.classList.add(getRandomName(3))
 					setTiming()

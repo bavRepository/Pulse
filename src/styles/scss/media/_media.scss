@@ -1,3 +1,6 @@
+@media (max-width: 1199.98px) {
+	// Здесь должна быть ваша реклама
+}
 @media (max-width: 991.98px) {
 	.container {
 		max-width: 720px;
@@ -8,7 +11,14 @@
 			justify-content: space-around;
 		}
 	}
+	.slider {
+		width: 600px;
+		&__slide {
+			height: 322px;
+		}
+	}
 }
+
 @media (max-width: 767.98px) {
 	.container {
 		max-width: 540px;
@@ -40,8 +50,34 @@
 			font-size: 15px;
 		}
 	}
-}
+	.carousel {
+		padding: 150px 0 81px 0;
+	}
 
+	.slider {
+		width: 500px;
+		&__slide {
+			height: 300px;
+		}
+
+		&__arrow-left {
+			left: 40%;
+			transform: translateY(-50%) translateX(-50%);
+			top: -25%;
+			&:hover {
+				transform: translateY(-50%) translateX(-50%) scale(1.2);
+			}
+		}
+		&__arrow-right {
+			left: 60%;
+			transform: translateY(-50%) translateX(-50%);
+			top: -25%;
+			&:hover {
+				transform: translateY(-50%) translateX(-50%) scale(1.2);
+			}
+		}
+	}
+}
 @media (max-width: 575.98px) {
 	.container {
 		max-width: auto;
@@ -73,6 +109,39 @@
 			margin-top: 50px;
 			gap: 20px 5px;
 			justify-content: space-evenly;
+		}
+	}
+	.carousel {
+		padding: 100px 0 41px 0;
+	}
+	.slider {
+		width: 300px;
+		&__slide {
+			height: 182px;
+		}
+		&__dot {
+			width: 40px;
+			height: 10px;
+		}
+		&__arrow-left {
+			width: 21px;
+			height: 35px;
+			left: 25%;
+			transform: translateY(-50%) translateX(-50%);
+			top: -25%;
+			&:hover {
+				transform: translateY(-50%) translateX(-50%) scale(1.2);
+			}
+		}
+		&__arrow-right {
+			width: 21px;
+			height: 35px;
+			left: 45%;
+			transform: translateY(-50%) translateX(-50%);
+			top: -25%;
+			&:hover {
+				transform: translateY(-50%) translateX(-50%) scale(1.2);
+			}
 		}
 	}
 }

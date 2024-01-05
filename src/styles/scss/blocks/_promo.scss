@@ -2,7 +2,7 @@
 	min-height: 650px;
 	background: url('../../assets/img/bg/bg.png') center center/cover no-repeat;
 	padding: 21px 0 93px 0;
-	&__title {
+	&__header {
 		text-align: center;
 		margin-top: 91px;
 		color: #fff;
@@ -10,7 +10,7 @@
 		font-weight: 700;
 		text-transform: uppercase;
 	}
-	&__subtitle {
+	&__subheader {
 		text-align: center;
 		margin-top: 17px;
 		color: #fff;
@@ -42,12 +42,11 @@
 		margin-top: 8px;
 		a {
 			display: inline-block;
-
 			color: #fff;
 			font-weight: 500;
 			text-decoration-line: underline;
 			text-transform: uppercase;
-			@include link-fade-in-out-timing;
+			transition: $link-fz-fade-in-out-timing01;
 			&:hover {
 				transform: scale(1.02);
 			}
