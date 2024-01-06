@@ -64,32 +64,32 @@ function carousel() {
 	}
 
 	function restartEngine(delay) {
-		setTimeout(() => {
-			isLoopStopped = false
-			loopingOnSliderEngine()
-		}, delay)
+		isLoopStopped = false
+		loopingOnSliderEngine(delay)
 	}
 	function slideLeft() {
 		arrowLeft.addEventListener('click', () => {
+			getPausedOffAfterArrowsAndDotsClick()
 			shiftingSlideIndex('-')
 			dotStyleCleaner(slideIndex)
 			initCurrentSlideIndex(slideIndex)
 			translateCarousel()
-			restartEngine(300)
+			restartEngine(4800)
 		})
 	}
 
 	function slideRight() {
 		arrowRight.addEventListener('click', () => {
+			getPausedOffAfterArrowsAndDotsClick()
 			shiftingSlideIndex()
 			dotStyleCleaner(slideIndex)
 			initCurrentSlideIndex(slideIndex)
 			translateCarousel()
-			restartEngine(300)
+			restartEngine(4800)
 		})
 	}
 
-	function loopingOnSliderEngine() {
+	function loopingOnSliderEngine(delay = 4500) {
 		sliderEngine = setInterval(() => {
 			if (!isLoopStopped) {
 				slideIndex++
@@ -100,7 +100,29 @@ function carousel() {
 				initCurrentSlideIndex(slideIndex)
 				translateCarousel()
 			}
-		}, 4500)
+		}, delay)
+	}
+
+	function getSliderPausedAfterSlideClick() {
+		slides.forEach(item => {
+			item.addEventListener('click', () => {
+				slider.classList.toggle('addBorder')
+				isLoopStopped = !isLoopStopped
+				if (!isLoopStopped) {
+					restartEngine(4800)
+				} else {
+					clearInterval(sliderEngine)
+				}
+			})
+		})
+	}
+
+	function getPausedOffAfterArrowsAndDotsClick() {
+		if (isLoopStopped) {
+			isLoopStopped = !isLoopStopped
+			slider.classList.toggle('addBorder')
+			restartEngine()
+		}
 	}
 
 	function initCurrentSlideIndex(count) {
@@ -125,12 +147,13 @@ function carousel() {
 	}
 
 	function dotSlideSwitcher(e, index) {
+		getPausedOffAfterArrowsAndDotsClick()
 		stopSliderEngine()
 		dotStyleCleaner(index)
 		slideIndex = Number(e.target.getAttribute('data-slide-index'))
 		translateCarousel()
 		initCurrentSlideIndex(slideIndex)
-		restartEngine(300)
+		restartEngine(4800)
 	}
 
 	function dotStyleCleaner(count) {
@@ -149,6 +172,7 @@ function carousel() {
 	slideLeft()
 	slideRight()
 	loopingOnSliderEngine()
+	getSliderPausedAfterSlideClick()
 	window.addEventListener('resize', resizeInit)
 }
 
