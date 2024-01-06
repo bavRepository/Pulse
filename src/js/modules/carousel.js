@@ -11,6 +11,8 @@ function carousel() {
 	let sliderWidth,
 		slideIndex = 0,
 		sliderEngine,
+		startDrag = 0,
+		changeDragCoord = 0,
 		isLoopStopped = false
 
 	function renderStartElements() {
@@ -69,23 +71,13 @@ function carousel() {
 	}
 	function slideLeft() {
 		arrowLeft.addEventListener('click', () => {
-			getPausedOffAfterArrowsAndDotsClick()
-			shiftingSlideIndex('-')
-			dotStyleCleaner(slideIndex)
-			initCurrentSlideIndex(slideIndex)
-			translateCarousel()
-			restartEngine(4800)
+			swipeRight()
 		})
 	}
 
 	function slideRight() {
 		arrowRight.addEventListener('click', () => {
-			getPausedOffAfterArrowsAndDotsClick()
-			shiftingSlideIndex()
-			dotStyleCleaner(slideIndex)
-			initCurrentSlideIndex(slideIndex)
-			translateCarousel()
-			restartEngine(4800)
+			swipeLeft()
 		})
 	}
 
@@ -103,6 +95,23 @@ function carousel() {
 		}, delay)
 	}
 
+	function swipeLeft() {
+		getPausedOffAfterArrowsAndDotsClick()
+		shiftingSlideIndex()
+		dotStyleCleaner(slideIndex)
+		initCurrentSlideIndex(slideIndex)
+		translateCarousel()
+		restartEngine(4800)
+	}
+	function swipeRight() {
+		getPausedOffAfterArrowsAndDotsClick()
+		shiftingSlideIndex('-')
+		dotStyleCleaner(slideIndex)
+		initCurrentSlideIndex(slideIndex)
+		translateCarousel()
+		restartEngine(4800)
+	}
+
 	function getSliderPausedAfterSlideClick() {
 		slides.forEach(item => {
 			item.addEventListener('click', () => {
@@ -116,6 +125,37 @@ function carousel() {
 			})
 		})
 	}
+
+	// PC
+	slider.addEventListener('dragstart', e => {
+		startDrag = e.clientX
+	})
+	slider.addEventListener('dragover', e => {
+		e.preventDefault()
+		let touch = e.clientX
+		changeDragCoord = startDrag - touch
+	})
+	slider.addEventListener('dragend', getSwiped)
+	function getSwiped() {
+		if (changeDragCoord > 0) {
+			swipeLeft()
+		} else {
+			swipeRight()
+		}
+	}
+	// Mobile, Tablet
+
+	slider.addEventListener('touchstart', e => {
+		startDrag = e.touches[0].clientX
+	})
+
+	slider.addEventListener('touchmove', e => {
+		e.preventDefault()
+		let touch = e.touches[0].clientX
+		changeDragCoord = startDrag - touch
+	})
+
+	slider.addEventListener('touchend', getSwiped)
 
 	function getPausedOffAfterArrowsAndDotsClick() {
 		if (isLoopStopped) {
@@ -157,6 +197,7 @@ function carousel() {
 	}
 
 	function dotStyleCleaner(count) {
+		console.log(count)
 		dots.forEach(item => {
 			item.classList.remove('slider__dot_active')
 		})
