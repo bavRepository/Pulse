@@ -1,8 +1,22 @@
 @media (hover: none) {
 	.slider {
+		&__arrow-left {
+			&:active {
+				transform: translateY(-50%) translateX(-50%) scale(1.2);
+			}
+		}
+		&__arrow-right {
+			&:active {
+				transform: translateY(-50%) translateX(-50%) scale(1.2);
+			}
+		}
+
 		&__dot {
 			&_active {
 				@include dot-active;
+			}
+			&:active {
+				transform: scale(1.04);
 			}
 		}
 	}
@@ -80,6 +94,10 @@
 		}
 	}
 
+	.carousel {
+		padding: 110px 0;
+	}
+
 	.slider {
 		width: 500px;
 		&__slide {
@@ -88,19 +106,11 @@
 
 		&__arrow-left {
 			left: 40%;
-			transform: translateY(-50%) translateX(-50%);
-			top: -25%;
-			&:hover {
-				transform: translateY(-50%) translateX(-50%) scale(1.2);
-			}
+			top: -20%;
 		}
 		&__arrow-right {
 			left: 60%;
-			transform: translateY(-50%) translateX(-50%);
-			top: -25%;
-			&:hover {
-				transform: translateY(-50%) translateX(-50%) scale(1.2);
-			}
+			top: -20%;
 		}
 	}
 }
@@ -156,22 +166,16 @@
 		&__arrow-left {
 			width: 21px;
 			height: 35px;
-			left: 25%;
+			left: 15%;
 			transform: translateY(-50%) translateX(-50%);
 			top: -25%;
-			&:hover {
-				transform: translateY(-50%) translateX(-50%) scale(1.2);
-			}
 		}
 		&__arrow-right {
 			width: 21px;
 			height: 35px;
-			left: 45%;
+			left: 35%;
 			transform: translateY(-50%) translateX(-50%);
 			top: -25%;
-			&:hover {
-				transform: translateY(-50%) translateX(-50%) scale(1.2);
-			}
 		}
 	}
 }

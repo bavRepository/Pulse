@@ -6,13 +6,15 @@ function carousel() {
 		arrowLeft = document.querySelector('.slider__arrow-left'),
 		arrowRight = document.querySelector('.slider__arrow-right'),
 		slides = document.querySelectorAll('.slider__slide'),
+		sliderScreen = document.querySelector('.slider__screen'),
 		dots = []
 
 	let sliderWidth,
 		slideIndex = 0,
 		sliderEngine,
-		startDrag = 0,
-		changeDragCoord = 0,
+		startDrag,
+		changeDragCoord,
+		totalAmountDragPixel,
 		isLoopStopped = false
 
 	function renderStartElements() {
@@ -28,7 +30,7 @@ function carousel() {
 			if (i === 0) {
 				dot.classList.add('slider__dot_active')
 			}
-			dot.addEventListener('click', e => dotSlideSwitcher(e, i))
+			dot.addEventListener('mousedown', e => dotSlideSwitcher(e, i))
 		}
 		initCurrentSlideIndex(slideIndex)
 		initTotalSlidesCount()
@@ -70,13 +72,15 @@ function carousel() {
 		loopingOnSliderEngine(delay)
 	}
 	function slideLeft() {
-		arrowLeft.addEventListener('click', () => {
+		arrowLeft.addEventListener('click', e => {
+			e.stopPropagation()
 			swipeRight()
 		})
 	}
 
 	function slideRight() {
-		arrowRight.addEventListener('click', () => {
+		arrowRight.addEventListener('click', e => {
+			e.stopPropagation()
 			swipeLeft()
 		})
 	}
@@ -114,7 +118,7 @@ function carousel() {
 
 	function getSliderPausedAfterSlideClick() {
 		slides.forEach(item => {
-			item.addEventListener('click', () => {
+			item.addEventListener('click', e => {
 				slider.classList.toggle('addBorder')
 				isLoopStopped = !isLoopStopped
 				if (!isLoopStopped) {
@@ -127,35 +131,39 @@ function carousel() {
 	}
 
 	// PC
-	slider.addEventListener('dragstart', e => {
+	sliderScreen.addEventListener('dragstart', e => {
 		startDrag = e.clientX
 	})
-	slider.addEventListener('dragover', e => {
+	sliderScreen.addEventListener('dragover', e => {
 		e.preventDefault()
 		let touch = e.clientX
 		changeDragCoord = startDrag - touch
 	})
-	slider.addEventListener('dragend', getSwiped)
-	function getSwiped() {
-		if (changeDragCoord > 0) {
-			swipeLeft()
-		} else {
-			swipeRight()
+	sliderScreen.addEventListener('dragend', e => getSwiped(e))
+	function getSwiped(e) {
+		if (totalAmountDragPixel > 10) {
+			if (changeDragCoord > 0) {
+				swipeLeft()
+			} else {
+				swipeRight()
+			}
 		}
+		totalAmountDragPixel = 0
 	}
-	// Mobile, Tablet
 
-	slider.addEventListener('touchstart', e => {
+	//	Mobile, Tablet
+	sliderScreen.addEventListener('touchstart', e => {
 		startDrag = e.touches[0].clientX
 	})
 
-	slider.addEventListener('touchmove', e => {
+	sliderScreen.addEventListener('touchmove', e => {
 		e.preventDefault()
-		let touch = e.touches[0].clientX
-		changeDragCoord = startDrag - touch
+		let touch = e.touches[0]
+		totalAmountDragPixel = startDrag + touch.clientX
+		changeDragCoord = startDrag - touch.clientX
 	})
 
-	slider.addEventListener('touchend', getSwiped)
+	sliderScreen.addEventListener('touchend', e => getSwiped(e))
 
 	function getPausedOffAfterArrowsAndDotsClick() {
 		if (isLoopStopped) {
@@ -197,7 +205,6 @@ function carousel() {
 	}
 
 	function dotStyleCleaner(count) {
-		console.log(count)
 		dots.forEach(item => {
 			item.classList.remove('slider__dot_active')
 		})

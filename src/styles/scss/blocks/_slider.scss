@@ -15,6 +15,10 @@
 			-3px -3px 20px #286867;
 	}
 
+	&__counter {
+		padding-right: 20px;
+	}
+
 	&__screen {
 		height: 100%;
 		width: 100%;
@@ -62,13 +66,13 @@
 		height: 50px;
 		position: absolute;
 		top: 50%;
-		transform: translateY(-50%);
+		transform: translateY(-50%) translateX(-50%);
 		left: -10%;
 		background: url('../../assets/icons/arrow-left.png') center center/cover no-repeat;
 		transition: $link-fz-fade-in-out-timing01;
-		&:hover {
-			transform: translateY(-50%) scale(1.3);
-		}
+		// &:hover {
+		// 	transform: translateY(-50%) scale(1.3);
+		// }
 	}
 	&__arrow-right {
 		z-index: 10;
@@ -77,13 +81,13 @@
 		height: 50px;
 		position: absolute;
 		top: 50%;
-		transform: translateY(-50%);
+		transform: translateY(-50%) translateX(-50%);
 		right: -10%;
 		background: url('../../assets/icons/arrow-right.png') center center/cover no-repeat;
 		transition: $link-fz-fade-in-out-timing01;
-		&:hover {
-			transform: translateY(-50%) scale(1.3);
-		}
+		// &:hover {
+		// 	transform: translateY(-50%) scale(1.3);
+		// }
 	}
 }
 
