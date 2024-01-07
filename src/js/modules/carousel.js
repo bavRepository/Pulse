@@ -30,7 +30,7 @@ function carousel() {
 			if (i === 0) {
 				dot.classList.add('slider__dot_active')
 			}
-			dot.addEventListener('mousedown', e => dotSlideSwitcher(e, i))
+			dot.addEventListener('click', e => dotSlideSwitcher(e, i))
 		}
 		initCurrentSlideIndex(slideIndex)
 		initTotalSlidesCount()
@@ -118,7 +118,7 @@ function carousel() {
 
 	function getSliderPausedAfterSlideClick() {
 		slides.forEach(item => {
-			item.addEventListener('click', e => {
+			item.addEventListener('click', () => {
 				slider.classList.toggle('addBorder')
 				isLoopStopped = !isLoopStopped
 				if (!isLoopStopped) {
@@ -138,6 +138,7 @@ function carousel() {
 		e.preventDefault()
 		let touch = e.clientX
 		changeDragCoord = startDrag - touch
+		totalAmountDragPixel = startDrag + touch
 	})
 	sliderScreen.addEventListener('dragend', e => getSwiped(e))
 	function getSwiped(e) {
@@ -205,6 +206,7 @@ function carousel() {
 	}
 
 	function dotStyleCleaner(count) {
+		console.log(count)
 		dots.forEach(item => {
 			item.classList.remove('slider__dot_active')
 		})
