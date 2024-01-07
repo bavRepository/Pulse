@@ -31,6 +31,16 @@
 				@include dot-active;
 			}
 		}
+		&__arrow-left {
+			&:hover {
+				transform: translateY(-50%) translateX(-50%) scale(1.2);
+			}
+		}
+		&__arrow-right {
+			&:hover {
+				transform: translateY(-50%) translateX(-50%) scale(1.2);
+			}
+		}
 	}
 }
 
@@ -48,7 +58,7 @@
 		}
 	}
 	.carousel {
-		padding: 81px 0 120px 0;
+		padding: 81px 0 61px 0;
 	}
 
 	.slider {
@@ -57,7 +67,7 @@
 			height: 322px;
 		}
 		&__dots {
-			bottom: -20%;
+			bottom: 5%;
 		}
 	}
 }
@@ -152,7 +162,7 @@
 	}
 
 	.slider {
-		width: 300px;
+		width: 310px;
 		&__slide {
 			height: 182px;
 		}
@@ -160,8 +170,8 @@
 			bottom: -30%;
 		}
 		&__dot {
-			width: 40px;
-			height: 10px;
+			width: 44px;
+			height: 13px;
 		}
 		&__arrow-left {
 			width: 21px;
