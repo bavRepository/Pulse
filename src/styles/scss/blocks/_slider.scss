@@ -41,10 +41,11 @@
 
 	&__dots {
 		list-style: none;
-		max-width: 280px;
+		max-width: 310px;
 		flex-wrap: wrap;
 		position: absolute;
 		display: flex;
+		justify-content: center;
 		gap: 5px 10px;
 		bottom: 10%;
 		left: 50%;
