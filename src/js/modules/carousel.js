@@ -1,4 +1,4 @@
-function carousel() {
+function carousel(animationDelay, sliderDelay) {
 	const slider = document.querySelector('.slider'),
 		slideCounterCurrent = document.querySelector('.slider__current'),
 		sliderCarousel = document.querySelector('.slider__carousel'),
@@ -105,7 +105,7 @@ function carousel() {
 		dotStyleCleaner(slideIndex)
 		initCurrentSlideIndex(slideIndex)
 		translateCarousel()
-		restartEngine(4800)
+		restartEngine(animationDelay + sliderDelay)
 	}
 	function swipeRight() {
 		getPausedOffAfterArrowsAndDotsClick()
@@ -113,7 +113,7 @@ function carousel() {
 		dotStyleCleaner(slideIndex)
 		initCurrentSlideIndex(slideIndex)
 		translateCarousel()
-		restartEngine(4800)
+		restartEngine(animationDelay + sliderDelay)
 	}
 
 	function getSliderPausedAfterSlideClick() {
@@ -122,7 +122,7 @@ function carousel() {
 				slider.classList.toggle('addBorder')
 				isLoopStopped = !isLoopStopped
 				if (!isLoopStopped) {
-					restartEngine(4800)
+					restartEngine(animationDelay + sliderDelay)
 				} else {
 					clearInterval(sliderEngine)
 				}
@@ -137,6 +137,11 @@ function carousel() {
 	sliderScreen.addEventListener('dragover', e => {
 		e.preventDefault()
 		let touch = e.clientX
+		if (startDrag < touch) {
+			sliderCarousel.style.transform = `translateX(-${slideIndex * sliderWidth - touch}px)`
+		} else {
+			sliderCarousel.style.transform = `translateX(-${slideIndex * sliderWidth + touch}px)`
+		}
 		changeDragCoord = startDrag - touch
 		totalAmountDragPixel = startDrag + touch
 	})
@@ -159,7 +164,13 @@ function carousel() {
 
 	sliderScreen.addEventListener('touchmove', e => {
 		e.preventDefault()
+
 		let touch = e.touches[0]
+		if (startDrag < touch.clientX) {
+			sliderCarousel.style.transform = `translateX(-${slideIndex * sliderWidth - touch.clientX}px)`
+		} else {
+			sliderCarousel.style.transform = `translateX(-${slideIndex * sliderWidth + touch.clientX}px)`
+		}
 		totalAmountDragPixel = startDrag + touch.clientX
 		changeDragCoord = startDrag - touch.clientX
 	})
@@ -202,11 +213,10 @@ function carousel() {
 		slideIndex = Number(e.target.getAttribute('data-slide-index'))
 		translateCarousel()
 		initCurrentSlideIndex(slideIndex)
-		restartEngine(4800)
+		restartEngine(animationDelay + sliderDelay)
 	}
 
 	function dotStyleCleaner(count) {
-		console.log(count)
 		dots.forEach(item => {
 			item.classList.remove('slider__dot_active')
 		})
@@ -221,7 +231,7 @@ function carousel() {
 	resizeInit()
 	slideLeft()
 	slideRight()
-	loopingOnSliderEngine()
+	loopingOnSliderEngine(sliderDelay)
 	getSliderPausedAfterSlideClick()
 	window.addEventListener('resize', resizeInit)
 }
