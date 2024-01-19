@@ -4,6 +4,7 @@ import '../styles/scss/style.scss'
 import advantages from './modules/advantages'
 import carousel from './modules/carousel'
 import catalog from './modules/catalog'
+import feedback from './modules/feedback'
 
 //settings
 const sliderAnimationDelay = 300
@@ -14,4 +15,5 @@ window.addEventListener('DOMContentLoaded', function () {
 	// consultation()
 	carousel(sliderAnimationDelay, sliderDelay)
 	catalog()
+	feedback()
 })

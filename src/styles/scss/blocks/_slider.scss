@@ -71,7 +71,7 @@
 		transform: translateY(-50%) translateX(-50%);
 		left: -10%;
 		background: url('../../assets/icons/arrow-left.png') center center/cover no-repeat;
-		transition: $link-fz-fade-in-out-timing01;
+		transition: $link-transition-01;
 	}
 	&__arrow-right {
 		z-index: 10;
@@ -83,7 +83,7 @@
 		transform: translateY(-50%) translateX(-50%);
 		right: -10%;
 		background: url('../../assets/icons/arrow-right.png') center center/cover no-repeat;
-		transition: $link-fz-fade-in-out-timing01;
+		transition: $link-transition-01;
 	}
 }
 

@@ -42,7 +42,7 @@ function carousel(animationDelay, sliderDelay) {
 		slides.forEach(item => {
 			item.style.width = sliderWidth + 'px'
 		})
-		translateCarousel()
+		translateCarousel(slideIndex * sliderWidth)
 	}
 
 	function stopSliderEngine() {
@@ -94,7 +94,7 @@ function carousel(animationDelay, sliderDelay) {
 				}
 				dotStyleCleaner(slideIndex)
 				initCurrentSlideIndex(slideIndex)
-				translateCarousel()
+				translateCarousel(slideIndex * sliderWidth)
 			}
 		}, delay)
 	}
@@ -104,7 +104,7 @@ function carousel(animationDelay, sliderDelay) {
 		shiftingSlideIndex()
 		dotStyleCleaner(slideIndex)
 		initCurrentSlideIndex(slideIndex)
-		translateCarousel()
+		translateCarousel(slideIndex * sliderWidth)
 		restartEngine(animationDelay + sliderDelay)
 	}
 	function swipeRight() {
@@ -112,7 +112,7 @@ function carousel(animationDelay, sliderDelay) {
 		shiftingSlideIndex('-')
 		dotStyleCleaner(slideIndex)
 		initCurrentSlideIndex(slideIndex)
-		translateCarousel()
+		translateCarousel(slideIndex * sliderWidth)
 		restartEngine(animationDelay + sliderDelay)
 	}
 
@@ -137,11 +137,7 @@ function carousel(animationDelay, sliderDelay) {
 	sliderScreen.addEventListener('dragover', e => {
 		e.preventDefault()
 		let touch = e.clientX
-		if (startDrag < touch) {
-			sliderCarousel.style.transform = `translateX(-${slideIndex * sliderWidth - touch}px)`
-		} else {
-			sliderCarousel.style.transform = `translateX(-${slideIndex * sliderWidth + touch}px)`
-		}
+		dragOverSlider(touch)
 		changeDragCoord = startDrag - touch
 		totalAmountDragPixel = startDrag + touch
 	})
@@ -166,11 +162,7 @@ function carousel(animationDelay, sliderDelay) {
 		e.preventDefault()
 
 		let touch = e.touches[0]
-		if (startDrag < touch.clientX) {
-			sliderCarousel.style.transform = `translateX(-${slideIndex * sliderWidth - touch.clientX}px)`
-		} else {
-			sliderCarousel.style.transform = `translateX(-${slideIndex * sliderWidth + touch.clientX}px)`
-		}
+		dragOverSlider(touch)
 		totalAmountDragPixel = startDrag + touch.clientX
 		changeDragCoord = startDrag - touch.clientX
 	})
@@ -202,8 +194,8 @@ function carousel(animationDelay, sliderDelay) {
 		}
 	}
 
-	function translateCarousel() {
-		sliderCarousel.style.transform = `translateX(-${slideIndex * sliderWidth}px)`
+	function translateCarousel(shiftValue) {
+		sliderCarousel.style.transform = `translateX(-${shiftValue}px)`
 	}
 
 	function dotSlideSwitcher(e, index) {
@@ -211,7 +203,7 @@ function carousel(animationDelay, sliderDelay) {
 		stopSliderEngine()
 		dotStyleCleaner(index)
 		slideIndex = Number(e.target.getAttribute('data-slide-index'))
-		translateCarousel()
+		translateCarousel(slideIndex * sliderWidth)
 		initCurrentSlideIndex(slideIndex)
 		restartEngine(animationDelay + sliderDelay)
 	}
@@ -225,6 +217,14 @@ function carousel(animationDelay, sliderDelay) {
 
 	function deleteNonDigits(str) {
 		return Number(str.replace(/\D/gi, ''))
+	}
+
+	function dragOverSlider(touchPos) {
+		if (startDrag < touchPos.clientX) {
+			translateCarousel(slideIndex * sliderWidth - touchPos.clientX)
+		} else {
+			translateCarousel(slideIndex * sliderWidth + touchPos.clientX)
+		}
 	}
 
 	renderStartElements()

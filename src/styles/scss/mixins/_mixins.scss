@@ -1,3 +1,13 @@
+@mixin animate($animation, $duration, $method, $times) {
+	animation: $animation $duration $method $times;
+}
+
+@mixin keyframes($name) {
+	@keyframes #{$name} {
+		@content;
+	}
+}
+
 @mixin btn-fade-in-out-timing() {
 	transition:
 		box-shadow 0.4s ease-in-out,
@@ -21,7 +31,7 @@
 }
 
 @mixin link-with-hover-and-timing() {
-	transition: $link-fz-fade-in-out-timing01;
+	transition: $link-transition-01;
 	&:hover {
 		transform: scale(1.05);
 	}

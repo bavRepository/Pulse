@@ -32,8 +32,8 @@
 		width: 135px;
 		height: 44px;
 		transition: all 0s;
-		&:hover {
-			@include btn-goods-hover-effects;
-		}
+		// &:hover {
+		// 	@include btn-goods-hover-effects;
+		// }
 	}
 }

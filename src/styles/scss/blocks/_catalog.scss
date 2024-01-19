@@ -8,10 +8,11 @@
 	}
 	&__tabs {
 		margin: 0 auto;
-		max-width: 643px;
 		margin-top: 46px;
 		list-style: none;
 		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
 		gap: 10px;
 	}
 	&__tab {
@@ -48,5 +49,9 @@
 		justify-content: center;
 		flex-wrap: wrap;
 		gap: 17px;
+		display: none;
+		&_active {
+			display: flex;
+		}
 	}
 }

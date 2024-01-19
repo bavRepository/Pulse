@@ -8,24 +8,21 @@
 		padding-bottom: 17px;
 		width: 100%;
 		overflow: hidden;
+		position: relative;
 	}
 
 	&__carousel {
 		display: flex;
-		transition: $all-500-ease-out;
+		align-items: flex-end;
+		transition: $transform-500-ease-out;
 		width: calc(200% + 40px);
 	}
 
-	&__frontside,
-	&__backside {
-		width: 50%;
+	&__front {
 		padding-bottom: 40px;
-		position: relative;
-	}
-
-	&__frontside {
+		width: 50%;
 		margin-right: 0;
-		transition: $all-500-ease-out;
+		transition: $transform-500-ease-out;
 		transform: translateX(-100%);
 		&_active {
 			transform: translateX(0);
@@ -33,29 +30,47 @@
 		}
 	}
 
-	&__backside {
-		margin-left: 0;
-		transition: $all-500-ease-out;
+	&__details {
+		padding-bottom: 40px;
+		width: 50%;
+		margin-left: 20px;
+		transition: $transform-500-ease-out;
 		transform: translateX(0);
 		&_active {
 			transform: translateX(-100%);
-			margin-right: 20;
+			margin-left: 0;
+			padding: 0 20px;
+			padding-bottom: 40px;
 		}
-	}
-
-	&__detailslist {
-		list-style: none;
 		color: $seventh-color;
 		font-size: 14px;
 		font-weight: 300;
 		line-height: 21px;
+		ul {
+			list-style: none;
+		}
 	}
 
 	&__detail {
+		position: relative;
+		&:nth-child(1) {
+			margin-top: 0;
+		}
 		margin-top: 20px;
+		&::before {
+			position: absolute;
+			left: -20px;
+			top: 6px;
+			content: '';
+			display: block;
+			width: 4px;
+			height: 4px;
+			background: $main-color;
+		}
 	}
 
 	&__img {
+		object-fit: cover;
 		display: block;
 		margin: 0 auto;
 		width: 140px;
@@ -75,13 +90,15 @@
 		font-size: 14px;
 		font-weight: 300;
 	}
-	&__link {
+	&__link,
+	&__back {
+		user-select: none;
+		display: block;
 		position: absolute;
 		bottom: 0;
 		left: 50%;
 		transform: translateX(-50%);
 		cursor: pointer;
-		margin-top: 10px;
 		color: #c70101;
 
 		text-align: center;

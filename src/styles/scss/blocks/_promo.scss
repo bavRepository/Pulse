@@ -46,7 +46,7 @@
 			font-weight: 500;
 			text-decoration-line: underline;
 			text-transform: uppercase;
-			transition: $link-fz-fade-in-out-timing01;
+			transition: $link-transition-01;
 			&:hover {
 				transform: scale(1.02);
 			}
