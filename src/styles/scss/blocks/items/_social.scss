@@ -1,0 +1,19 @@
+.social {
+	display: flex;
+	gap: 27px;
+	justify-content: center;
+	&__link {
+		cursor: pointer;
+		transition: $link-transition-01;
+		display: block;
+		color: white;
+		border-radius: 100%;
+		border: 2px solid white;
+		height: 52px;
+		width: 53px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 25px;
+	}
+}
