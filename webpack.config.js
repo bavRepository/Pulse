@@ -4,13 +4,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const mode = process.env.NODE_ENV || 'development',
 	devMode = mode === 'development',
-	devtool = devMode ? 'source-map' : undefined,
-	target = devMode ? 'web' : 'browserslist'
+	target = devMode ? 'web' : 'browserslist',
+	devtool = devMode ? 'source-map' : undefined
 
 module.exports = {
 	mode,
-	devtool,
 	target,
+	devtool,
 	devServer: {
 		port: 3000,
 		open: true,
