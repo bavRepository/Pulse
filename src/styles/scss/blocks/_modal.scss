@@ -1,0 +1,54 @@
+.overlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	background-color: rgba(0, 0, 0, 0.56);
+	width: 100%;
+	height: 100vh;
+	&_active {
+		display: block;
+		animation: elem-appear 0.3s ease-out 1;
+	}
+}
+
+.modal {
+	display: none;
+	padding: 38px;
+	width: 380px;
+	min-height: 400px;
+	background-color: $modal-back;
+	&__subtitle {
+		font-size: 19px;
+		font-weight: 700;
+		text-align: center;
+		color: $third-color;
+	}
+	&__descr {
+		font-size: 14px;
+		font-weight: 700;
+		margin-top: 10px;
+		text-align: center;
+		color: $third-color;
+	}
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	&__close {
+		cursor: pointer;
+		position: absolute;
+		color: $main-color;
+		top: 0;
+		right: -40px;
+		font-size: 35px;
+		line-height: 21px;
+		font-weight: 700;
+	}
+	&_active {
+		display: block;
+		animation: elem-appear 0.8s ease-out;
+	}
+	&_mini {
+		min-height: 143px;
+	}
+}

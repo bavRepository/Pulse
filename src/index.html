@@ -6,7 +6,7 @@
 		<title>Pulse</title>
 	</head>
 	<body>
-		<section class="promo">
+		<section class="promo" id="up">
 			<div class="container">
 				<header class="header">
 					<a href="#" class="header__logo">
@@ -19,7 +19,7 @@
 					<div class="header__contacts">
 						<a href="tel:74999228974" class="header__phone">+7 (499) 922-89-74</a>
 
-						<button class="button">заказать звонок</button>
+						<button class="button" data-modal="consultation">заказать звонок</button>
 					</div>
 				</header>
 				<div class="promo__wrapper">
@@ -39,7 +39,7 @@
 							<div class="promo-icon__descr">Ответим на все вопросы</div>
 						</div>
 					</div>
-					<button class="button button_w300">заказать кОНСУЛЬТАЦИЮ</button>
+					<button class="button button_w300" data-modal="consultation">заказать кОНСУЛЬТАЦИЮ</button>
 					<div class="promo__link">или <a href="#">ПЕРЕЙТИ В КАТАЛОГ</a></div>
 				</div>
 			</div>
@@ -87,7 +87,7 @@
 					<input name="name" required type="text" class="form__name" placeholder="Ваше имя" />
 					<input name="phone" required type="number" class="form__phone" placeholder="Ваш телефон" />
 					<input name="email" required type="email" class="form__email" placeholder="Ваш E-mail" />
-					<button class="button button_submit">заказать кОНСУЛЬТАЦИЮ</button>
+					<button class="button button_submit" data-modal="thanks">заказать кОНСУЛЬТАЦИЮ</button>
 				</form>
 			</div>
 		</section>
@@ -153,7 +153,7 @@
 								<div class="catalog-item__oldprice">4 750 руб.</div>
 								<div class="catalog-item__newprice">4 500 руб.</div>
 							</div>
-							<button class="button button_goods">КУПИТЬ</button>
+							<button class="button button_goods" data-modal="order">КУПИТЬ</button>
 						</div>
 					</div>
 					<div class="catalog-item">
@@ -181,7 +181,7 @@
 								<div class="catalog-item__oldprice">4 750 руб.</div>
 								<div class="catalog-item__newprice">4 500 руб.</div>
 							</div>
-							<button class="button button_goods">КУПИТЬ</button>
+							<button class="button button_goods" data-modal="order">КУПИТЬ</button>
 						</div>
 					</div>
 					<div class="catalog-item">
@@ -209,7 +209,7 @@
 								<div class="catalog-item__oldprice">4 750 руб.</div>
 								<div class="catalog-item__newprice">4 500 руб.</div>
 							</div>
-							<button class="button button_goods">КУПИТЬ</button>
+							<button class="button button_goods" data-modal="order">КУПИТЬ</button>
 						</div>
 					</div>
 					<div class="catalog-item">
@@ -237,7 +237,7 @@
 								<div class="catalog-item__oldprice">4 750 руб.</div>
 								<div class="catalog-item__newprice">4 500 руб.</div>
 							</div>
-							<button class="button button_goods">КУПИТЬ</button>
+							<button class="button button_goods" data-modal="order">КУПИТЬ</button>
 						</div>
 					</div>
 					<div class="catalog-item">
@@ -265,7 +265,7 @@
 								<div class="catalog-item__oldprice">4 750 руб.</div>
 								<div class="catalog-item__newprice">4 500 руб.</div>
 							</div>
-							<button class="button button_goods">КУПИТЬ</button>
+							<button class="button button_goods" data-modal="order">КУПИТЬ</button>
 						</div>
 					</div>
 					<div class="catalog-item">
@@ -293,7 +293,7 @@
 								<div class="catalog-item__oldprice">4 750 руб.</div>
 								<div class="catalog-item__newprice">4 500 руб.</div>
 							</div>
-							<button class="button button_goods">КУПИТЬ</button>
+							<button class="button button_goods" data-modal="order">КУПИТЬ</button>
 						</div>
 					</div>
 				</div>
@@ -323,7 +323,7 @@
 								<div class="catalog-item__oldprice">4 750 руб.</div>
 								<div class="catalog-item__newprice">4 500 руб.</div>
 							</div>
-							<button class="button button_goods">КУПИТЬ</button>
+							<button class="button button_goods" data-modal="order">КУПИТЬ</button>
 						</div>
 					</div>
           <div class="catalog-item">
@@ -351,7 +351,7 @@
 								<div class="catalog-item__oldprice">4 750 руб.</div>
 								<div class="catalog-item__newprice">4 500 руб.</div>
 							</div>
-							<button class="button button_goods">КУПИТЬ</button>
+							<button class="button button_goods" data-modal="order">КУПИТЬ</button>
 						</div>
 					</div>
           <div class="catalog-item">
@@ -379,7 +379,7 @@
 								<div class="catalog-item__oldprice">4 750 руб.</div>
 								<div class="catalog-item__newprice">4 500 руб.</div>
 							</div>
-							<button class="button button_goods">КУПИТЬ</button>
+							<button class="button button_goods" data-modal="order">КУПИТЬ</button>
 						</div>
 					</div>
 				</div>
@@ -409,7 +409,7 @@
                 <div class="catalog-item__oldprice">4 750 руб.</div>
                 <div class="catalog-item__newprice">4 500 руб.</div>
               </div>
-              <button class="button button_goods">КУПИТЬ</button>
+              <button class="button button_goods" data-modal="order">КУПИТЬ</button>
             </div>
           </div>
           <div class="catalog-item">
@@ -437,7 +437,7 @@
                 <div class="catalog-item__oldprice">4 750 руб.</div>
                 <div class="catalog-item__newprice">4 500 руб.</div>
               </div>
-              <button class="button button_goods">КУПИТЬ</button>
+              <button class="button button_goods" data-modal="order">КУПИТЬ</button>
             </div>
           </div>
           <div class="catalog-item">
@@ -465,7 +465,7 @@
                 <div class="catalog-item__oldprice">4 750 руб.</div>
                 <div class="catalog-item__newprice">4 500 руб.</div>
               </div>
-              <button class="button button_goods">КУПИТЬ</button>
+              <button class="button button_goods" data-modal="order">КУПИТЬ</button>
             </div>
           </div>
           <div class="catalog-item">
@@ -493,7 +493,7 @@
                 <div class="catalog-item__oldprice">4 750 руб.</div>
                 <div class="catalog-item__newprice">4 500 руб.</div>
               </div>
-              <button class="button button_goods">КУПИТЬ</button>
+              <button class="button button_goods" data-modal="order">КУПИТЬ</button>
             </div>
           </div>
         </div>
@@ -563,5 +563,35 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.4303078892813!2d37.64442107708774!3d55.768397990789516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a636edcd2ad%3A0x4c2ca101e2c8c617!2z0JzRj9GB0L3QuNGG0LrQuNC5INC_0YAt0LQsIDQvMywg0JzQvtGB0LrQstCwLCDQoNC-0YHRgdC40Y8sIDEwNzA3OA!5e0!3m2!1sru!2sfi!4v1706798471338!5m2!1sru!2sfi" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </footer>
+    <div class="overlay">
+      <div class="modal" id="consultation">
+        <div class="modal__close">&times;</div>
+        <div class="modal__subtitle">Просто заполните форму заявки</div>
+        <div class="modal__descr">и мы перезвоним вам в течении 10 минут</div>
+				<form action="#" class="feed-form feed-form_modal">
+					<input name="name" required type="text" class="form__name" placeholder="Ваше имя" />
+					<input name="phone" required type="number" class="form__phone" placeholder="Ваш телефон" />
+					<input name="email" required type="email" class="form__email" placeholder="Ваш E-mail" />
+					<button class="button button_submit">заказать кОНСУЛЬТАЦИЮ</button>
+				</form>
+      </div>
+      <div class="modal" id="order">
+        <div class="modal__close">&times;</div>
+        <div class="modal__subtitle">Ваш заказ:</div>
+        <div class="modal__descr">Пульсометр Polar FT1</div>
+				<form action="#" class="feed-form feed-form_modal">
+					<input name="name" required type="text" class="form__name" placeholder="Ваше имя" />
+					<input name="phone" required type="number" class="form__phone" placeholder="Ваш телефон" />
+					<input name="email" required type="email" class="form__email" placeholder="Ваш E-mail" />
+					<button class="button button_submit">купить</button>
+				</form>
+      </div>
+      <div class="modal modal_mini" id="thanks">
+        <div class="modal__close">&times;</div>
+        <div class="modal__subtitle">Спасибо за вашу заявку!</div>
+        <div class="modal__descr">Наш менеджер свяжется с вами в ближайшее время!</div>
+      </div>
+    </div>
+    <a href="#up" class="pageup"><img src="assets/icons/circle-up.svg" alt="up"></a>
 	</body>
 </html>

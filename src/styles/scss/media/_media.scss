@@ -1,4 +1,13 @@
 @media (hover: none) {
+	.modal {
+		&__close {
+			transition: $link-transition-01;
+			&:active {
+				transform: scale(1.3);
+			}
+		}
+	}
+
 	.header {
 		&__phone {
 			&:active {
@@ -51,19 +60,28 @@
 	}
 }
 @media (hover: hover) {
+	.modal {
+		&__close {
+			transition: $link-transition-01;
+			&:hover {
+				transform: scale(1.3);
+			}
+		}
+	}
+
+	.header {
+		&__phone {
+			&:hover {
+				transform: scale(1.05);
+			}
+		}
+	}
 	.footer {
 		&__phone {
 			a {
 				&:hover {
 					transform: scale(1.05);
 				}
-			}
-		}
-	}
-	.header {
-		&__phone {
-			&:hover {
-				transform: scale(1.05);
 			}
 		}
 	}
@@ -205,9 +223,9 @@
 	}
 	.promo {
 		background-position: 35% 50%;
-		&__title {
-			margin-top: 50px;
-			font-size: 34px;
+		&__header {
+			margin-top: 26px;
+			font-size: 28px;
 		}
 		&__subtitle {
 			font-size: 16px;
@@ -215,6 +233,11 @@
 		&__link {
 			margin-top: 10px;
 		}
+
+		.button {
+			margin-top: 10px;
+		}
+
 		.button_w300 {
 			margin-top: 50px;
 			width: 240px;
